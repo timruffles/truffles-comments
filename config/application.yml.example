@@ -9,11 +9,11 @@ development:
   email_method: smtp
 
 test:
-  base_url: http://juvia.yoursite.com
-  from: juvia@yoursite.com
-  email_method: test
+  base_url: http://localhost:3000
+  from: comment-bot@truffles.me.uk
+  email_method: mailgun
 
 production:
-  base_url: http://juvia.yoursite.com
-  from: juvia@yoursite.com
-  email_method: sendmail
+  base_url: http://truffles-comments.herokuapp.com
+  from: comment-bot@truffles.me.uk
+  email_method: mailgun
