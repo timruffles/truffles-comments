@@ -64,8 +64,6 @@ module Juvia
       if !(uri.scheme == "http" && uri.port == 80) && !(uri.scheme == "https" && uri.port == 443)
         config.action_mailer.default_url_options[:port] = uri.port
       end
-
-      config.action_mailer.delivery_method = config.email_method.to_sym
     end
   end
 end
