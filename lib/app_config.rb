@@ -86,7 +86,6 @@ module AppConfig
         abort "Please edit #{config_file} and set the aforementioned settings."
       end
 
-      install_email_config(app, config)
     end
     
     private
@@ -134,24 +133,6 @@ module AppConfig
       result
     end
 
-    def install_email_config(app, config)
-      if email_config = config[:email]
-        if base_url = email_config[:base_url]
-          uri = URI.parse(base_url)
-          app.config.action_mailer.default_url_options = { :host => uri.host }
-          if uri.scheme != "http"
-            app.config.action_mailer.default_url_options[:protocol] = uri.scheme
-          end
-          if !(uri.scheme == "http" && uri.port == 80) && !(uri.scheme == "https" && uri.port == 443)
-            app.config.action_mailer.default_url_options[:port] = uri.port
-          end
-        end
-        
-        if delivery_method = config[:delivery_method]
-          app.config.action_mailer.delivery_method = delivery_method.to_sym
-        end
-      end
-    end
   end
   
   module RailsExtensions

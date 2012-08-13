@@ -22,7 +22,7 @@ module Juvia
   class Application < Rails::Application
     require File.expand_path('../../lib/app_config', __FILE__)
 
-    config.required_app_config = [:base_url, :from, :email_method]
+    config.required_app_config = [:base_url]
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
