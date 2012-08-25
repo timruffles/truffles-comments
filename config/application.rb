@@ -53,12 +53,10 @@ module Juvia
     # Enable the asset pipeline
     config.assets.enabled = true
     
-    initializer "application action_mailer settings" do
-			config.action_mailer.delivery_method = :mailgun
-			config.action_mailer.mailgun_settings = {
-				:api_key  => ENV["MAILGUN_API_KEY"],
-				:api_host => ENV["MAILGUN_API_HOST"]
-			}
-    end
+		config.action_mailer.delivery_method = :mailgun
+		config.action_mailer.mailgun_settings = {
+			:api_key  => ENV["MAILGUN_API_KEY"],
+			:api_host => ENV["MAILGUN_API_HOST"]
+		}
   end
 end
