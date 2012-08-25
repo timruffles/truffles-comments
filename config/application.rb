@@ -22,8 +22,6 @@ module Juvia
   class Application < Rails::Application
     require File.expand_path('../../lib/app_config', __FILE__)
 
-    config.required_app_config = [:base_url]
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -55,15 +53,12 @@ module Juvia
     # Enable the asset pipeline
     config.assets.enabled = true
     
-    initializer "application action_mailer settings", :after => "app_config" do
-      uri = URI.parse(config.base_url)
-      config.action_mailer.default_url_options = { :host => uri.host }
-      if uri.scheme != "http"
-        config.action_mailer.default_url_options[:protocol] = uri.scheme
-      end
-      if !(uri.scheme == "http" && uri.port == 80) && !(uri.scheme == "https" && uri.port == 443)
-        config.action_mailer.default_url_options[:port] = uri.port
-      end
+    initializer "application action_mailer settings" do
+			config.action_mailer.delivery_method = :mailgun
+			config.action_mailer.mailgun_settings = {
+				:api_key  => ENV["MAILGUN_API_KEY"],
+				:api_host => ENV["MAILGUN_API_HOST"]
+			}
     end
   end
 end

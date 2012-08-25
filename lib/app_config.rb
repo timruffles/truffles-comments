@@ -82,9 +82,6 @@ module AppConfig
       config = recursively_make_indifferent_access(config[Rails.env])
       Rails.config = config
       install_into_app_config(config, app.config)
-      if !check_requirements(nil, config, app.config.required_app_config)
-        abort "Please edit #{config_file} and set the aforementioned settings."
-      end
 
     end
     

@@ -14,6 +14,7 @@ gem 'will_paginate', '~> 3.0.pre4'
 gem 'css3buttons'
 gem 'cancan'
 gem 'inherited_resources'
+gem 'mailgun-rails'
 
 # Deploy with Capistrano
 # gem 'capistrano'
@@ -26,19 +27,6 @@ group :development do
   gem 'guard-livereload'
 end
 
-# Bundle gems for the local environment. Make sure to
-# put test-only gems in this group so their generators
-# and rake tasks are available in development mode:
-group :development, :test do
-  gem 'rspec-rails', '~> 2.4'
-  gem 'capybara', :require => false
-  gem 'capybara-webkit', :require => false
-  gem 'database_cleaner', :require => false
-  gem 'factory_girl_rails', :require => false
-  gem 'launchy', :require => false
-  gem 'spork', '0.9.0.rc9', :require => false
-end
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -48,3 +36,4 @@ group :assets do
 end
 
 gem 'pg'
+gem 'sqlite3'
