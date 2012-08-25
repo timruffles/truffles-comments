@@ -25,6 +25,7 @@ gem 'bcrypt-ruby'
 
 group :development do
   gem 'guard-livereload'
+	gem 'sqlite3'
 end
 
 # Gems used only for assets and not required
@@ -36,4 +37,3 @@ group :assets do
 end
 
 gem 'pg'
-gem 'sqlite3'
